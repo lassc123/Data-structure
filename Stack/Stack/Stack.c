@@ -1,3 +1,4 @@
+//Stack.c
 #define _CRT_SECURE_NO_WARNINGS 1
 #include"Stack.h"
 //栈的初始化 栈的销毁
@@ -18,7 +19,7 @@ void StackDestroy(ST* s)
 void StackPush(ST* s, STDataType x)
 {
 	//检查容量是否满了
-	if (s->capacity==s->size )
+	if (s->capacity == s->size)
 	{
 		int newcapacity = s->capacity == 0 ? 4 : s->capacity * 2;
 		STDataType* tmp = (STDataType*)realloc(s->a, newcapacity * sizeof(STDataType));
@@ -26,9 +27,11 @@ void StackPush(ST* s, STDataType x)
 		{
 			perror("realloc failed");
 			return;
+			//gpt给出的建议
+			//exit(EXIT_FAILURE); 如果realloc失败，退出程序
 		}
 		s->a = tmp;
-		s->capacity=newcapacity;
+		s->capacity = newcapacity;
 	}
 	s->top++;
 	s->a[s->top] = x;
@@ -45,13 +48,15 @@ void StackPop(ST* s)
 STDataType StackTop(ST* s) {
 	assert(!StackEmpty(s));
 	return s->a[s->top];
-	
+
 };
 
-bool StackEmpty(ST* s) 
+bool StackEmpty(ST* s)
 {
 	if (s->size == 0)
 		return true;
 	else
 		return false;
+	//更好，更简洁的方式
+	//return s->size == 0;
 };
