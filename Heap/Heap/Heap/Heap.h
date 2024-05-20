@@ -24,3 +24,4 @@ int HeapSize(Heap* hp);
 bool HeapEmpty(Heap* hp);
 void AdjustUp(HPDataType* a, int child);
 void AdjustDown(HPDataType* a, int parent, int size);
+void Swap(HPDataType* a, HPDataType* b);
